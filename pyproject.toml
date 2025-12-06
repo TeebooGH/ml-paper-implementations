@@ -1,0 +1,15 @@
+[project]
+name = "ml-paper-implementations"
+version = "0.1.0"
+description = "From scratch implementations of foundational ML papers."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.5",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.8",
+]
