@@ -4,7 +4,7 @@ Implementing foundational deep learning papers using only NumPy (at first) to de
 
 I'm also planning on reimplementing some papers using PyTorch to build competency in industry-standard frameworks.
 
-## Papers Implemented
+## Papers Implemented - 1 in progress
 
 | Paper | Year | Notebook | Key Concepts |
 |-------|------|----------|--------------|
