@@ -1,64 +1,88 @@
-# ML Paper Implementations from Scratch
+# Implémentations de papers ML from scratch
 
-Implementing foundational deep learning papers using only NumPy (at first) to deeply understand the underlying mathematics. 
+Implémentation de papers fondamentaux en deep learning en utilisant uniquement NumPy (dans un premier temps), afin de comprendre en profondeur les mathématiques sous-jacentes.
 
-I'm also planning on reimplementing some papers using PyTorch to build competency in industry-standard frameworks.
+Je prévois également de réimplémenter certains papers avec PyTorch pour acquérir des compétences sur les frameworks standards de l'industrie.
 
-## Papers Implemented - 1 in progress
+## Papers implémentés — 1 en cours
 
-| Paper | Year | Notebook | Key Concepts |
-|-------|------|----------|--------------|
-| [Attention Is All You Need](papers/attention_is_all_you_need/) | 2017 | [📓 Notebook](papers/attention_is_all_you_need/transformer_numpy.ipynb) | Self-attention, Multi-head attention, Positional encoding |
-| More coming soon... | | | |
+| Paper | Année | Implémentation | Concepts clés |
+|-------|-------|----------------|---------------|
+| [Attention Is All You Need](papers/attention_is_all_you_need/transformer_torch/) | 2017 | [🔥 PyTorch](papers/attention_is_all_you_need/transformer_torch/) · [📓 Notebook NumPy](papers/attention_is_all_you_need/transformer_numpy.ipynb) | Self-attention, Attention multi-têtes, Encodage positionnel |
+| D'autres à venir... | | | |
 
-## Setup
+## Guide de navigation — à l'attention de M. Hossam Afifi
+
+> **Note :** Le dépôt contient deux implémentations distinctes du Transformer. Seule l'implémentation PyTorch constitue le rendu du projet.
+
+| Dossier | Contenu | Pertinent ? |
+|---------|---------|-------------|
+| `papers/attention_is_all_you_need/transformer_torch/` | **Projet principal** — implémentation PyTorch complète from scratch | ✅ Oui |
+| `papers/attention_is_all_you_need/transformer_numpy.ipynb` | Prototype NumPy initial pour explorer les mathématiques | Exploratoire uniquement, **à ne pas regarder** |
+| `papers/activation_functions/` | Notebook sur les fonctions d'activation | Sans rapport |
+
+### Par où commencer
+
+1. Lire [`papers/attention_is_all_you_need/transformer_torch/README.md`](papers/attention_is_all_you_need/transformer_torch/README.md) pour une description complète du projet, de l'architecture et des instructions d'exécution.
+2. Le modèle est découpé en six fichiers dans `transformer_torch/model/` — chacun correspond à un composant spécifique du paper Transformer.
+3. [`transformer_torch/transformer_output.py`](papers/attention_is_all_you_need/transformer_torch/transformer_output.py) assemble l'ensemble et effectue un passage avant complet avec vérification des formes des tenseurs.
+
+---
+
+## Installation
 
 ```bash
-# Clone and install
+# Cloner et installer
 git clone https://github.com/TeebooGH/ml-paper-implementations.git
 cd ml-paper-implementations
 uv sync
 
-# Run notebooks, if you're not running this project on an IDE that supports Jupyter Notebooks.
+# Lancer les notebooks, si vous n'utilisez pas un IDE supportant Jupyter Notebooks.
 uv run jupyter lab
 ```
 
-## Why From Scratch? 
+## Pourquoi from scratch ?
 
-Implementing without frameworks forces understanding of:
-- Forward and backward passes
-- Gradient computation
-- Numerical stability considerations
+Implémenter sans framework oblige à comprendre :
+- Les passes avant et arrière
+- Le calcul des gradients
+- Les considérations de stabilité numérique
 
-## File Outline
+## Structure des fichiers
 
 ```
 ml-paper-implementations/
 ├── pyproject.toml
-├── README.md                           # Overview + links to each paper
+├── README.md                           # Vue d'ensemble + liens vers chaque paper
 ├── uv.lock
 │
 ├── papers/
 │   ├── activation_functions             
-│   │   ├── activation_functions.ipynb  # Generally used activation functions and when to use a certain one
+│   │   ├── activation_functions.ipynb  # Fonctions d'activation courantes et quand les utiliser
 │   │
 │   ├── attention_is_all_you_need/
-│   │   ├── README.md                   # Paper-specific explanation
-│   │   ├── transformer_numpy.ipynb
-│   │   └── transformer_numpy/
-│   │       ├── __init__. py
-│   │       ├── attention.py
-│   │       ├── layers.py
-│   │       └── model.py
+│   │   ├── transformer_numpy.ipynb     # Prototype NumPy
+│   │   ├── transformer_numpy/          # Implémentation NumPy
+│   │   │
+│   │   └── transformer_torch/          # ← Projet principal (PyTorch, from scratch)
+│   │       ├── README.md               # README du projet (en français)
+│   │       ├── transformer_output.py   # Test du passage avant complet
+│   │       └── model/
+│   │           ├── embeddings.py
+│   │           ├── positioning.py
+│   │           ├── attention.py
+│   │           ├── feed_forward.py
+│   │           ├── normalization.py
+│   │           └── transformer.py
 │   │
-│   ├── resnet/                         # (Example) Future paper
+│   ├── resnet/                         # (Exemple) Paper futur
 │   │   ├── README.md
 │   │   └── ... 
 │   │
-│   └── gan/                            # (Example) Future paper
+│   └── gan/                            # (Exemple) Paper futur
 │       └── ... 
 │
-└── shared/                             # Optional: common utilities
-    ├── __init__. py
-    └── viz.py                          # Shared visualization helpers
+└── shared/                             # Utilitaires communs (optionnel)
+    ├── __init__.py
+    └── viz.py                          # Helpers de visualisation partagés
 ```
